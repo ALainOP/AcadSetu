@@ -1,0 +1,7 @@
+name,apaar,dob,institution,programme,start,end,institutionStudentId,session,admissionDate,nriStatus,ociStatus,fnStatus,nationality,seatType,enrolmentStatus
+Aarush Sen,991030200001,2003-05-10,MSR,MBA,2027-07-01,2029-06-30,MSR-2027-TEST-1,2027-28,2027-06-20,No,No,No,India,regular,active
+Bhavna Rao,991030200002,2003-05-11,MSR,MBA,2027-07-01,2029-06-30,MSR-2027-TEST-2,2027-28,2027-06-20,Yes,No,No,India,regular,active
+Chirag Nair,991030200003,2003-05-12,MSR,MBA,2027-07-01,2029-06-30,MSR-2027-TEST-3,2027-28,2027-06-20,No,Yes,No,Canada,regular,active
+Deepa Shah,991030200004,2003-05-13,MSR,MBA,2027-07-01,2029-06-30,MSR-2027-TEST-4,2027-28,2027-06-20,No,No,Yes,Nepal,regular,active
+Eshan Das,991030200005,2003-05-14,MSR,MBA,2027-07-01,2029-06-30,MSR-2027-TEST-5,2027-28,2027-06-20,No,No,No,India,regular,active
+Farah Khan,991030200006,2003-05-15,MSR,MBA,2027-07-01,2029-06-30,MSR-2027-TEST-6,2027-28,2027-06-20,No,No,No,India,regular,active

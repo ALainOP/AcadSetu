@@ -1,0 +1,4 @@
+name,apaar,dob,institution,programme,start,end,institutionStudentId,session,admissionDate,nriStatus,ociStatus,fnStatus,nationality,seatType,enrolmentStatus
+Ram Das,990000003124,2000-05-14,RV,B.Tech,2026-07-01,2030-06-30,RV-2026-001,2026-27,2026-06-20,No,No,No,India,regular,active
+Demo Invalid,12345,2002-05-14,PES,BCA,2026-07-01,2025-06-30,PES-2026-BAD,2026-27,2025-06-20,No,No,No,India,regular,active
+Sahana Rao,990000009999,2003-04-12,BMS,BCA,2026-07-01,2029-06-30,BMS-2026-NEW,2026-27,2026-06-20,No,No,No,India,regular,active
