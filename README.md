@@ -4,7 +4,7 @@ APAAR-linked student records and admissions review, built as a local prototype f
 
 AcadSetu brings student submissions, verification states, enrolment conflicts and intake checks into one workflow. An institution can upload records, investigate a flagged case and correct the underlying data. A student can contribute evidence and share selected details through a revocable verification reference.
 
-This repository contains the working demo. Student data is synthetic, government integrations are simulated, and the role picker is not a real login system. Run it locally; do not use it with real student data or expose the API publicly.
+This repository contains the working demo. Student data is synthetic, government integrations are simulated, and the role picker is not a real login system. It can be deployed as a public demonstration, but do not use it with real student data or treat its demo roles as security controls.
 
 ## Run locally
 
@@ -20,6 +20,20 @@ npm run dev
 Open **http://127.0.0.1:5173**. The Express API runs on **http://127.0.0.1:3001**; its root URL is not a web page. Both processes start with `npm run dev`.
 
 On the first run, the app creates `data/demo.json` from the seed fixtures. Changes persist in that file between restarts. The file is excluded from Git so each checkout starts with fresh demo data.
+
+## Deploy a demonstration on Render
+
+The Express service serves both the built Vite interface and the API. In Render, create a **Web Service** connected to this repository and set:
+
+| Setting | Value |
+| --- | --- |
+| Build command | `npm ci && npm run build` |
+| Start command | `npm start` |
+| Health check path | `/api/health` |
+
+To preserve changes to the synthetic records across restarts and deploys, attach a persistent disk mounted at `/var/data` and set `ACAD_DATA_FILE` to `/var/data/demo.json`. Without that disk, the service filesystem is temporary and saved demo changes may be lost. A disk-backed Render service is a paid plan and runs as a single instance; check Render's current pricing before creating one.
+
+The deployment is suitable only for a controlled demo with synthetic data. Anyone who can reach the URL can use the demo role picker and API; it does not provide real authentication or production privacy protections. Do not enter real student data, real credentials or API secrets. Keep government connectors in simulated mode.
 
 If port 5173 is already in use, stop the other copy of the development server before starting another one.
 

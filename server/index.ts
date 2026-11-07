@@ -1,10 +1,16 @@
 import express from 'express';
 import fs from 'node:fs';
+import path from 'node:path';
+import {fileURLToPath} from 'node:url';
 import {db} from './store.ts';
 const app=express();app.use(express.json({limit:'2mb'}));
 app.get('/api/health',(_,res)=>res.json({ok:true,demo:true}));
 app.get('/api/state',(req,res)=>{const role=req.headers['x-demo-role'];if(role==='Verifier / Employer')return res.status(403).json({error:'Use a scoped verification reference.'});if(role==='Student')return res.json({...db,records:db.records.filter((r:any)=>r.studentKey==='S1'),cases:db.cases.filter((c:any)=>c.recordIds.includes('R001')),shares:db.shares.filter((s:any)=>s.recordId==='R001').map(({hash,...s}:any)=>s),audit:[],imports:[],previews:[]});res.json({...db,shares:db.shares.map(({hash,...s}:any)=>s)});});
 for(const file of fs.readdirSync(new URL('./steps/',import.meta.url)).filter(f=>f.endsWith('.ts')).sort())(await import('./steps/'+file)).default(app);
+app.use('/api',(req,res)=>res.status(404).json({error:'API route not found.'}));
+const webRoot=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'../dist');
+app.use(express.static(webRoot));
+app.get(/.*/,(_req,res)=>res.sendFile(path.join(webRoot,'index.html')));
 app.use((err:any,req:any,res:any,next:any)=>{console.error(err.message);res.status(400).json({error:err.message||'Request could not be processed.'});});
-const port=Number(process.env.ACAD_PORT||3001);
-app.listen(port,'127.0.0.1',()=>console.log(`ACAD SETU API http://127.0.0.1:${port} · synthetic data only`));
+const port=Number(process.env.PORT||process.env.ACAD_PORT||3001);
+app.listen(port,'0.0.0.0',()=>console.log(`ACAD SETU demo listening on port ${port} · synthetic data only`));
