@@ -129,5 +129,5 @@ This is a single-machine demonstration, not a production student registry:
 - Dossiers can be downloaded as text. Regulatory reports and certificate printing are not implemented; the Reports navigation item is inactive.
 - QR references point to the local application. Scanning from a different device does not make that device's localhost reach the running server.
 
-The college names are used for illustration and do not imply affiliation or endorsement. Production work would need authenticated users, enforced institutional access boundaries, approved integrations, durable storage and broader security and  load validation.
+The college names are used for the illustration and do not imply the affiliation or the endorsement. Production work would need authenticated users, enforced institutional access boundaries, approved integrations, durable storage and broader security and  load validation.
 
